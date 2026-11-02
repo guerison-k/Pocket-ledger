@@ -197,6 +197,138 @@ ul.plist{list-style:none;margin:0 0 14px;padding:0}
 .jr-wrap label{font-size:12.5px;font-weight:600;color:var(--muted)}
 .jr-hint{font-size:12.5px;color:var(--muted);margin:0}
 
+/* welcome banner, routine, trading */
+:root{--wl-a:#17324D;--wl-b:#0F5C58;--wl-ink:#FFFFFF;--wl-mute:#D4E4E8;--wl-hi:#8CF0CB;
+  --hm1:#D3EDE1;--hm2:#A5D9C0;--hm3:#3FA882;--hm4:#0B7A57;--hm-ink:#FFFFFF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--wl-a:#1B3D63;--wl-b:#115248;--hm1:#1D3F34;--hm2:#256650;--hm3:#2F9272;--hm4:#4CC9A0;--hm-ink:#0C1311}}
+:root[data-theme="dark"]{--wl-a:#1B3D63;--wl-b:#115248;--hm1:#1D3F34;--hm2:#256650;--hm3:#2F9272;--hm4:#4CC9A0;--hm-ink:#0C1311}
+
+/* seven tabs scroll sideways on a phone */
+.tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:1 0 auto;padding:9px 14px;font-size:13.5px;white-space:nowrap}
+
+/* welcome banner */
+.welcome{position:relative;overflow:hidden;isolation:isolate;border-radius:20px;padding:22px 20px 20px;margin-bottom:14px;color:var(--wl-ink);
+  background:linear-gradient(135deg,var(--wl-a) 0%,var(--wl-b) 100%)}
+.welcome::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.07) 31px 32px)}
+.welcome .eyebrow{color:var(--wl-mute)}
+.welcome h2{font-size:clamp(28px,8vw,36px);font-weight:700;letter-spacing:-.01em;margin:8px 0 6px;line-height:1.08}
+.wl-name{color:var(--wl-hi);letter-spacing:.04em}
+.welcome p{margin:0;color:var(--wl-mute);font-size:14px;max-width:30ch}
+.wl-deco{position:absolute;right:6px;top:12px;width:112px;height:82px;z-index:-1}
+.wl-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.wl-chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:5px 11px;border-radius:99px;font-size:12.5px;color:var(--wl-ink)}
+.wl-chip b{color:var(--wl-hi)}
+
+/* routine */
+.rt-hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.rt-big{font-size:clamp(24px,7vw,30px);margin:4px 0}
+.rt-part{font:600 11px var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:14px 0 2px}
+.wkscroll{overflow-x:auto}
+.wk{display:grid;grid-template-columns:minmax(84px,1.5fr) repeat(7,minmax(0,1fr));gap:6px 3px;align-items:center;min-width:0}
+.wkh{text-align:center;font:600 10.5px var(--f-body);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);line-height:1.25}
+.wkh b{display:block;font:700 13px var(--f-num);color:var(--ink)}
+.wkh.t b{color:var(--accent)}
+.wkn{font-size:13.5px;font-weight:500;overflow-wrap:anywhere;padding-right:6px}
+.wc{justify-self:center;width:28px;height:28px;border-radius:50%;border:2px solid var(--line);background:transparent;display:grid;place-content:center;padding:0;color:transparent;font-size:12px}
+.wc svg{width:15px;height:15px}
+.wc.done{background:var(--in);border-color:var(--in);color:var(--surface)}
+.wc.miss{border-color:var(--out);opacity:.55}
+.wc.today{border-color:var(--accent)}
+.wc.pre{border-style:dashed}
+.wc.off{border:0;color:var(--muted);cursor:default}
+.hmgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.hc{aspect-ratio:1/1;border-radius:8px;border:1.5px solid transparent;background:var(--surface2);display:grid;place-content:center;font:600 12px var(--f-num);color:var(--muted)}
+.hc.hm1{background:var(--hm1);color:var(--ink)}
+.hc.hm2{background:var(--hm2);color:var(--ink)}
+.hc.hm3{background:var(--hm3);color:var(--hm-ink)}
+.hc.hm4{background:var(--hm4);color:var(--hm-ink)}
+.hc.zero{border-color:var(--line)}
+.hc.today{outline:2px solid var(--accent);outline-offset:1px}
+.hmleg{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-top:10px}
+.hmleg i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.minis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.dchips{display:flex;gap:6px;flex-wrap:wrap}
+.dchip{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 0;width:44px;font-weight:600;font-size:13px;color:var(--muted)}
+.dchip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.hrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.hrow:last-child{border-bottom:0}
+.hrow b{font-weight:600;overflow-wrap:anywhere}
+.hrow span.m{font-size:12.5px;color:var(--muted)}
+
+/* trading */
+.ttool{display:grid;gap:10px;margin-bottom:14px}
+.ttool .chips{margin:0}
+.ttool2{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ttool2 .seg{margin:0;width:150px}
+.seg.three{grid-template-columns:repeat(3,1fr)}
+.seg.three button{padding:8px 4px}
+.tnet .big{font:700 clamp(32px,10vw,46px)/1.05 var(--f-num);letter-spacing:-.03em;margin:6px 0 4px}
+.tsub{color:var(--muted);font-size:13.5px}
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.kcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;min-width:0}
+.kcard .num.v{font-size:22px;font-weight:700;display:block;margin-top:2px}
+.kcard small{color:var(--muted);font-size:12px;grid-column:1/-1;line-height:1.35}
+.gauge{width:52px;height:52px;transform:rotate(0deg)}
+.wlbar{grid-column:1/-1;display:grid;gap:4px;margin-top:2px}
+.wlbar i{display:block;height:7px;border-radius:99px}
+.scoregrid{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;justify-items:center}
+.radar{width:100%;max-width:340px;display:block}
+.radar text{fill:var(--muted);font:10px var(--f-body)}
+.scorebadge{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;justify-content:center}
+.scorebadge .num{font-size:40px;font-weight:700;line-height:1}
+.tcal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr)) minmax(0,1.2fr);gap:4px}
+.tc,.tw{min-height:50px;border-radius:8px;padding:4px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1.5px solid transparent;background:var(--surface2);font-family:var(--f-num);min-width:0}
+.tc span.d{font-size:10px;color:var(--muted);line-height:1}
+.tc span.v,.tw span.v{font-size:10.5px;font-weight:700;line-height:1.1;overflow:hidden;max-width:100%;text-overflow:ellipsis}
+.tc.win{background:var(--in-bg);color:var(--in)}
+.tc.loss{background:var(--out-bg);color:var(--out)}
+.tc.sel{border-color:var(--accent)}
+.tc.today span.d{color:var(--accent);font-weight:700}
+.tc.blank{background:transparent}
+.tw{background:transparent;border:1px dashed var(--line)}
+.tw span.d{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.tw.win span.v{color:var(--in)} .tw.loss span.v{color:var(--out)}
+.trow{display:grid;grid-template-columns:4px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;padding:12px 14px 12px 0}
+.trow:last-child{border-bottom:0}
+.trow:hover{background:var(--surface2)}
+.trow .bar{align-self:stretch;border-radius:0 4px 4px 0;background:var(--muted)}
+.trow.win .bar{background:var(--in)} .trow.loss .bar{background:var(--out)}
+.trow .tt{min-width:0}
+.trow .tt b{display:block;font-weight:600;overflow-wrap:anywhere}
+.trow .tt>span{font-size:12.5px;color:var(--muted);display:block;overflow-wrap:anywhere}
+.trow .pv{text-align:right;font-weight:700;white-space:nowrap}
+.trow .pv small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+.trow.win .pv .num{color:var(--in)} .trow.loss .pv .num{color:var(--out)}
+.side{font:700 10px var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:5px;margin-left:6px;vertical-align:1px;background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.tbl{display:grid;gap:0}
+.tbl .r{display:grid;grid-template-columns:minmax(0,1.4fr) .6fr .8fr minmax(0,1.1fr);gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.tbl .r:last-child{border-bottom:0}
+.tbl .r.h{font:600 10.5px var(--f-body);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-top:0}
+.tbl .r span:not(:first-child){text-align:right}
+.tbl .r span:first-child{overflow-wrap:anywhere;font-weight:500}
+.dbar{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:6px 0;font-size:13.5px}
+.dbar .tr{height:10px;background:var(--surface2);border-radius:99px;position:relative;overflow:hidden}
+.dbar .tr i{position:absolute;top:0;bottom:0;border-radius:99px}
+.tgc{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:600;color:var(--muted)}
+.tgc[aria-pressed="true"]{background:var(--regret);color:#fff;border-color:var(--regret)}
+.tgc.good[aria-pressed="true"]{background:var(--in);color:var(--surface);border-color:var(--in)}
+.tagrow{display:flex;gap:6px;flex-wrap:wrap}
+.stars{display:flex;gap:6px}
+.stars button{border:1px solid var(--line);background:var(--surface);border-radius:10px;width:44px;height:40px;font:700 14px var(--f-num);color:var(--muted)}
+.stars button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chart .zero{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
+.chart .ln{fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.chart .ar{fill:currentColor;opacity:.13}
+.chart .pos{fill:var(--in)} .chart .neg{fill:var(--out)}
+.lnk{border:0;background:transparent;color:var(--accent);font-weight:600;padding:8px 0}
+@media (max-width:420px){
+  .rt-hero{grid-template-columns:1fr auto}
+  .wl-deco{width:92px;height:68px}
+  .tbl .r{grid-template-columns:minmax(0,1.3fr) .5fr .75fr minmax(0,1fr);font-size:13px}
+}
+
 /* add button + sheet */
 .fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:6;
   background:var(--accent);color:var(--accent-ink);border:0;border-radius:99px;padding:14px 22px;font-weight:700;font-size:16px;box-shadow:0 6px 20px rgba(0,0,0,.25);display:flex;gap:8px;align-items:center}
@@ -230,8 +362,11 @@ ul.plist{list-style:none;margin:0 0 14px;padding:0}
   .track .fill{transition:width .4s ease}
   .ring .v{transition:stroke-dasharray .5s ease}
 }
+/* iPhone app tweaks */
+input,select,textarea{font-size:16px}
+*{-webkit-tap-highlight-color:transparent}
+body{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
 </style>
-
 <div class="wrap" id="app" aria-live="polite"></div>
 <button class="fab" id="fab" type="button"><b>+</b> Add</button>
 <div id="sheetRoot"></div>
@@ -405,6 +540,137 @@ function samplePlans(T){
     [14,'Visit family','',15000,0],[27,'Pay school fees','',60000,0]];
   return L.map(function(r,i){return {id:'sp'+i,date:addDays(T,r[0]),title:r[1],time:r[2],amount:r[3],done:!!r[4],sample:true}});
 }
+/* ----- routine + trading logic ----- */
+var ALLDAYS=[0,1,2,3,4,5,6];
+var DAYNAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var PARTS=[['morning','Morning'],['day','Daytime'],['evening','Evening']];
+var TRADE_TAGS=['Followed plan','FOMO entry','Revenge trade','Moved stop','Oversized','Exited early','Held too long','No setup'];
+var DEFAULT_SETUPS=['Breakout','Pullback','Reversal','News'];
+function clamp100(x){return Math.max(0,Math.min(100,x))}
+function schedDay(h,d){return h.days.indexOf(parseD(d).getDay())>=0}
+function isDue(h,d){return schedDay(h,d)&&d>=h.start}
+function isDone(S,h,d){var l=S.habitLog[d];return !!l&&l.indexOf(h.id)>=0}
+function habitStreak(S,h,T){
+  var cur=0,best=0,run=0,fixed=false;
+  for(var i=0;i<400;i++){
+    var ds=addDays(T,-i);
+    if(!isDue(h,ds))continue;
+    var dn=isDone(S,h,ds);
+    if(i===0&&!dn)continue;
+    if(dn){run++;if(run>best)best=run;if(!fixed)cur=run}
+    else{fixed=true;run=0}
+  }
+  return {cur:cur,best:best};
+}
+function habitRate(S,h,T,n){
+  var due=0,dn=0;
+  for(var i=0;i<n;i++){
+    var ds=addDays(T,-i);
+    if(!isDue(h,ds))continue;
+    if(i===0&&!isDone(S,h,ds))continue;
+    due++;if(isDone(S,h,ds))dn++;
+  }
+  return due?dn/due:null;
+}
+function dayCompletion(S,d){
+  var due=S.habits.filter(function(h){return isDue(h,d)});
+  if(!due.length)return null;
+  var dn=due.filter(function(h){return isDone(S,h,d)}).length;
+  return {due:due.length,done:dn,pct:dn/due.length};
+}
+function daysLabel(days){
+  if(days.length===7)return 'Every day';
+  var s=days.slice().sort().join('');
+  if(s==='12345')return 'Weekdays';
+  return [1,2,3,4,5,6,0].filter(function(d){return days.indexOf(d)>=0}).map(function(d){return DAYNAMES[d]}).join(', ');
+}
+function seedHabits(T){
+  var L=[['Wake up before 6:30','morning',ALLDAYS],['Exercise 30 minutes','morning',[1,2,3,4,5]],['Review spending plan','day',ALLDAYS],
+    ['Drink 2 litres of water','day',ALLDAYS],['Trading plan and journal','evening',[1,2,3,4,5]],['Read 20 minutes','evening',ALLDAYS],['Plan tomorrow','evening',ALLDAYS]];
+  return L.map(function(r,i){return {id:'sh'+i,name:r[0],part:r[1],days:r[2].slice(),start:addDays(T,-30),sample:true}});
+}
+function seedHabitLog(hs,T){
+  var log={};
+  for(var i=0;i<=28;i++){
+    var ds=addDays(T,-i);
+    hs.forEach(function(h,k){
+      if(!isDue(h,ds))return;
+      var hv=(i*37+k*53+(i*i)%7)%11,ok=i===0?(k===0||k===2):(k===2&&i<=9?true:(k===0&&i<=3?true:hv<(7+(k%3))));
+      if(ok){(log[ds]=log[ds]||[]).push(h.id)}
+    });
+  }
+  return log;
+}
+function seedTrades(T){
+  var P=[120,-100,200,-120,-150,310,-90,-110,180,-100,60,240,-160,-120,150,420,-200,70,-130,260,-100,-180,85,330,-150,140,-170,50,190,-200];
+  var SY=['EURUSD','XAUUSD','NAS100','GBPUSD','BTCUSD','USDJPY'],SU=DEFAULT_SETUPS;
+  var M=['FOMO entry','Revenge trade','Moved stop','Oversized','Exited early'];
+  var out=[],n=0;
+  for(var i=42;i>=0;i--){
+    var ds=addDays(T,-i),wd=parseD(ds).getDay();
+    if(wd===0||wd===6)continue;
+    var cnt=1+(i%3===0?1:0)+(i%5===0?1:0);
+    for(var c=0;c<cnt;c++){
+      var pnl=P[n%P.length],tags=[],notes='';
+      if(pnl<0&&n%2===0){tags=[M[n%M.length]];notes='Broke my rules: '+tags[0].toLowerCase()+'.'}
+      else if(pnl>0&&n%3!==0){tags=['Followed plan'];notes='Waited for confirmation and stuck to the plan.'}
+      out.push({id:'st'+n,date:ds,symbol:SY[(n*2+i)%SY.length],side:(n%3===0?'short':'long'),setup:SU[n%SU.length],pnl:pnl,risk:100,
+        entry:null,exit:null,size:null,tags:tags,rating:pnl>0?4+(n%2):2+(n%2),notes:notes,sample:true});
+      n++;
+    }
+  }
+  return out;
+}
+function tstats(arr,base0){
+  arr=arr.slice().sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:0});
+  var n=arr.length,net=0,gw=0,gl=0,w=0,l=0,be=0,byDay={},days=[];
+  arr.forEach(function(t){
+    net+=t.v;
+    if(t.v>0){w++;gw+=t.v}else if(t.v<0){l++;gl+=-t.v}else be++;
+    if(byDay[t.date]==null){byDay[t.date]=0;days.push(t.date)}
+    byDay[t.date]+=t.v;
+  });
+  var dayVals=days.map(function(d){return byDay[d]});
+  var dw=dayVals.filter(function(v){return v>0}).length,dl=dayVals.filter(function(v){return v<0}).length;
+  var cum=[],run=base0||0,peak=run,maxDD=0,maxDDPct=0,ddDate=null;
+  days.forEach(function(d){
+    run+=byDay[d];cum.push(run);
+    if(run>peak)peak=run;
+    var dd=peak-run;
+    if(dd>maxDD){maxDD=dd;maxDDPct=peak>0?dd/peak*100:0;ddDate=d}
+  });
+  var dayStreak=0,tradeStreak=0,i,j;
+  for(i=dayVals.length-1;i>=0&&dayVals[i]>0;i--)dayStreak++;
+  for(j=arr.length-1;j>=0&&arr[j].v>0;j--)tradeStreak++;
+  var avgWin=w?gw/w:0,avgLoss=l?gl/l:0;
+  return {n:n,net:net,w:w,l:l,be:be,gw:gw,gl:gl,winPct:n?w/n*100:0,
+    pf:gl>0?gw/gl:(gw>0?Infinity:0),avgWin:avgWin,avgLoss:avgLoss,
+    ratio:avgLoss>0?avgWin/avgLoss:(avgWin>0?Infinity:0),expect:n?net/n:0,
+    days:days,dayVals:dayVals,byDay:byDay,cum:cum,dw:dw,dl:dl,dayWinPct:days.length?dw/days.length*100:0,
+    dayStreak:dayStreak,tradeStreak:tradeStreak,maxDD:maxDD,maxDDPct:maxDDPct,ddDate:ddDate};
+}
+function traderScore(sd){
+  if(!sd.n)return null;
+  var fin=function(x,cap){return isFinite(x)?x:cap};
+  var rf=sd.maxDD>0?sd.net/sd.maxDD:(sd.net>0?5:0);
+  var posDays=sd.dayVals.filter(function(v){return v>0}),posSum=posDays.reduce(function(a,b){return a+b},0);
+  var share=posSum>0?Math.max.apply(null,posDays)/posSum:1;
+  var comps=[
+    {label:'Win %',val:clamp100(sd.winPct/60*100)},
+    {label:'Profit factor',val:clamp100(fin(sd.pf,3)/2.5*100)},
+    {label:'Avg win/loss',val:clamp100(fin(sd.ratio,3)/2*100)},
+    {label:'Recovery',val:clamp100(rf/6*100)},
+    {label:'Drawdown',val:clamp100(100-sd.maxDDPct*8)},
+    {label:'Consistency',val:posDays.length>1?clamp100((1-share)*110):0}
+  ];
+  var score=Math.round(comps.reduce(function(a,c){return a+c.val},0)/comps.length);
+  var weak=comps.slice().sort(function(a,b){return a.val-b.val})[0];
+  return {score:score,comps:comps,weak:weak.label,label:score>=75?'Strong edge':score>=55?'Developing':score>=35?'Needs work':'Rebuild'};
+}
+function calcSample(S){
+  return S.entries.some(function(e){return e.sample})||S.plans.some(function(p){return p.sample})||
+    S.habits.some(function(h){return h.sample})||S.trading.trades.some(function(t){return t.sample});
+}
 function seedState(todayS){
   var p=todayS.split('-').map(Number),Y=p[0],M=p[1],T=p[2];
   var base=[
@@ -434,7 +700,7 @@ function seedState(todayS){
   var pm=addMonth(todayS.slice(0,7),-1).split('-').map(Number);
   add(pm[0],pm[1],base.map(function(r){return r.slice()}),1.12);
   add(Y,M,base,1);
-  return {v:1,currency:'RWF',saveTarget:20,budgets:Object.assign({},DEFAULT_BUDGETS),entries:entries,updatedAt:0,hasSample:true,plans:samplePlans(todayS),journal:{}};
+  return {v:1,currency:'RWF',saveTarget:20,budgets:Object.assign({},DEFAULT_BUDGETS),entries:entries,updatedAt:0,hasSample:true,plans:samplePlans(todayS),journal:{},habits:seedHabits(todayS),habitLog:seedHabitLog(seedHabits(todayS),todayS),trading:{currency:'USD',balance:10000,setups:DEFAULT_SETUPS.slice(),trades:seedTrades(todayS)}};
 }
 /*END LOGIC*/
 
@@ -449,13 +715,21 @@ function normalize(x){
     updatedAt:Number(x.updatedAt)||0,hasSample:false,
     plans:Array.isArray(x.plans)?x.plans.filter(function(p){return p&&p.date&&p.title}):null,
     journal:(x.journal&&typeof x.journal==='object'&&!Array.isArray(x.journal))?x.journal:{}};
-  if(out.plans===null)out.plans=out.entries.some(function(e){return e.sample})?samplePlans(todayStr()):[];
-  out.hasSample=out.entries.some(function(e){return e.sample})||out.plans.some(function(p){return p.sample});
+  var wasSample=out.entries.some(function(e){return e.sample});
+  if(out.plans===null)out.plans=wasSample?samplePlans(todayStr()):[];
+  var hb=Array.isArray(x.habits)?x.habits.filter(function(h){return h&&h.id&&h.name&&Array.isArray(h.days)}).map(function(h){return Object.assign({part:'day',start:'0000-00-00'},h)}):null;
+  out.habits=hb!==null?hb:(wasSample?seedHabits(todayStr()):[]);
+  out.habitLog=(x.habitLog&&typeof x.habitLog==='object'&&!Array.isArray(x.habitLog))?x.habitLog:((hb===null&&wasSample)?seedHabitLog(out.habits,todayStr()):{});
+  var tr=(x.trading&&typeof x.trading==='object')?x.trading:{};
+  var trades=Array.isArray(tr.trades)?tr.trades.filter(function(t){return t&&t.date&&t.symbol&&typeof t.pnl==='number'}).map(function(t){return Object.assign({tags:[],risk:0,rating:0,notes:'',side:'long',setup:''},t)}):null;
+  out.trading={currency:['USD','EUR','GBP','RWF','KES','UGX','TZS'].indexOf(tr.currency)>=0?tr.currency:'USD',balance:(isFinite(tr.balance)&&tr.balance!==null&&tr.balance>=0)?Number(tr.balance):10000,
+    setups:(Array.isArray(tr.setups)&&tr.setups.length)?tr.setups.filter(function(q){return typeof q==='string'}):DEFAULT_SETUPS.slice(),trades:trades!==null?trades:(wasSample?seedTrades(todayStr()):[])};
+  out.hasSample=calcSample(out);
   return out;
 }
 function loadLocal(){try{var raw=localStorage.getItem(LS_KEY);if(raw)return normalize(JSON.parse(raw))}catch(e){}return null}
 function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(S))}catch(e){}}
-function touch(){S.updatedAt=Date.now();S.hasSample=S.entries.some(function(e){return e.sample})||S.plans.some(function(p){return p.sample});saveLocal();queueCloud()}
+function touch(){S.updatedAt=Date.now();S.hasSample=calcSample(S);saveLocal();queueCloud()}
 
 function queueCloud(){
   if(!cloud.doc)return;
@@ -543,7 +817,7 @@ function itemList(items,cls,withSev){
   }).join('')+'</ul>';
 }
 function viewOverview(a,T){
-  var h='';
+  var h=welcomeHtml(a,T);
   var keptCls=a.kept>=0?'pos':'neg';
   var rateTxt=a.rate==null?'Add income to see your savings rate.':(a.rate>=a.target?'Saving '+pct(a.rate)+'% of income. Target is '+S.saveTarget+'%.':'Keeping '+Math.max(0,pct(a.rate))+'% of income. Target is '+S.saveTarget+'%.');
   h+='<section class="panel"><div class="hero"><div><div class="eyebrow">Kept this month</div><div class="big num '+keptCls+'"><small>'+S.currency+'</small>'+(a.kept<0?'−':'')+fmtNum(S,Math.abs(a.kept))+'</div><div style="color:var(--muted);font-size:14px">'+rateTxt+'</div></div>'+ringHtml(a.score)+'</div>'+
@@ -609,13 +883,15 @@ function render(){
   var tk=T.slice(0,7);
   var h='<header class="top"><div class="brand"><span class="eyebrow">Daily money tracker</span><h1>Pocket Ledger</h1></div>'+
     '<div class="month"><button type="button" id="pm" aria-label="Previous month">‹</button><span>'+monthName(viewKey)+'</span><button type="button" id="nm" aria-label="Next month"'+(viewKey>=tk?' disabled':'')+'>›</button></div></header>';
-  h+='<nav class="tabs" role="tablist">'+[['overview','Overview'],['review','Review'],['history','History'],['plans','Plans'],['budget','Budget']].map(function(t){return '<button type="button" role="tab" data-tab="'+t[0]+'" aria-selected="'+(tab===t[0])+'">'+t[1]+'</button>'}).join('')+'</nav>';
+  h+='<nav class="tabs" role="tablist">'+[['overview','Overview'],['review','Review'],['history','History'],['plans','Plans'],['routine','Routine'],['trading','Trading'],['budget','Budget']].map(function(t){return '<button type="button" role="tab" data-tab="'+t[0]+'" aria-selected="'+(tab===t[0])+'">'+t[1]+'</button>'}).join('')+'</nav>';
   if(S.hasSample)h+='<div class="banner"><span>Example data is loaded so you can see how the app works.</span><button type="button" id="clr2">Clear it and start fresh</button></div>';
-  h+=tab==='overview'?viewOverview(a,T):tab==='review'?viewReview(a):tab==='history'?viewHistory(a):tab==='plans'?viewPlans():viewBudget();
+  h+=tab==='overview'?viewOverview(a,T):tab==='review'?viewReview(a):tab==='history'?viewHistory(a):tab==='plans'?viewPlans():tab==='routine'?viewRoutine():tab==='trading'?viewTrading():viewBudget();
   h+='<p class="foot" id="sync">'+syncText()+'</p>';
   var app=document.getElementById('app');
   app.innerHTML=h;
-  wire();wirePlans();
+  wire();wirePlans();wireRoutine();wireTrading();
+  var fb=document.getElementById('fab');if(fb)fb.innerHTML=tab==='trading'?'<b>+</b> Trade':'<b>+</b> Add';
+  var at=document.querySelector('.tabs [aria-selected="true"]');if(at&&at.scrollIntoView)at.scrollIntoView({inline:'center',block:'nearest'});
 }
 
 /* ---------- events ---------- */
@@ -642,26 +918,12 @@ function wire(){
     if(el.dataset.arm){S.entries=[];touch();toast('Everything deleted');render();return}
     el.dataset.arm='1';el.textContent='Tap again to delete everything';setTimeout(function(){if(document.body.contains(el)){delete el.dataset.arm;el.textContent='Delete everything'}},3500)};
 }
-function clearSample(){S.entries=S.entries.filter(function(e){return !e.sample});S.plans=S.plans.filter(function(p){return !p.sample});touch();toast('Example data cleared. Tap Add to log your own.');render()}
+function clearSample(){S.entries=S.entries.filter(function(e){return !e.sample});S.plans=S.plans.filter(function(p){return !p.sample});S.habits=S.habits.filter(function(h){return !h.sample});var keep={};S.habits.forEach(function(h){keep[h.id]=1});Object.keys(S.habitLog).forEach(function(d){var l=S.habitLog[d].filter(function(i){return keep[i]});if(l.length)S.habitLog[d]=l;else delete S.habitLog[d]});S.trading.trades=S.trading.trades.filter(function(t){return !t.sample});touch();toast('Example data cleared. Tap Add to log your own.');render()}
 function exportCsv(){
   var q=function(v){v=String(v==null?'':v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
   var rows=[['Date','Type','Category','Kind','Amount','Note','Regret']].concat(S.entries.slice().sort(function(a,b){return a.date<b.date?-1:1}).map(function(e){return [e.date,e.type==='in'?'Money in':'Money out',e.cat,kindOf(e),e.amount,e.note||'',e.regret?'yes':'']}));
   var data=rows.map(function(r){return r.map(q).join(',')}).join('\n');
-  var name='pocket-ledger-'+todayStr()+'.csv';
-  try{
-    var file=new File([data],name,{type:'text/csv'});
-    if(navigator.canShare&&navigator.canShare({files:[file]})){
-      navigator.share({files:[file],title:'Pocket Ledger export'}).then(function(){toast('Export ready')}).catch(function(e){if(!e||e.name!=='AbortError')toast('Could not create the export.')});
-      return;
-    }
-  }catch(e0){}
-  try{
-    var blob=new Blob([data],{type:'text/csv;charset=utf-8'});
-    var url=URL.createObjectURL(blob);
-    var l=document.createElement('a');l.href=url;l.download=name;document.body.appendChild(l);l.click();l.remove();
-    setTimeout(function(){URL.revokeObjectURL(url)},1000);
-    toast('Export downloaded');
-  }catch(err){toast('Could not create the export.')}
+  saveFile('pocket-ledger-'+todayStr()+'.csv',data);
 }
 
 /* ---------- add / edit sheet ---------- */
@@ -715,8 +977,8 @@ function renderSheet(focus){
   };
   if(focus)document.getElementById('fa').focus();
 }
-document.getElementById('fab').onclick=function(){openSheet(null)};
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheet)closeSheet()});
+document.getElementById('fab').onclick=function(){if(tab==='trading')openTrade(null);else openSheet(null)};
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(sheet)closeSheet();else if(tsheet)closeTSheet()}});
 
 /* ---------- plans + journal ---------- */
 function longDate(s){return parseD(s).toLocaleDateString('en-US',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
@@ -837,6 +1099,457 @@ function wirePlans(){
   }
 }
 
+/* ---------- shared helpers for new pages ---------- */
+var OWNER_NAME='KAMANZI';
+var routMonth=todayStr().slice(0,7),habitEdit=null;
+var trange='30',tview='$',tpriv=false,tcalKey=todayStr().slice(0,7),tday=null,tfilt='all',tshow=12,tsheet=null;
+var CHECK_SVG='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function sumPnl(list){return list.reduce(function(a,t){return a+t.pnl},0)}
+
+function saveFile(name,data){
+  try{
+    var file=new File([data],name,{type:'text/csv'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file],title:'Pocket Ledger export'}).then(function(){toast('Export ready')}).catch(function(e){if(!e||e.name!=='AbortError')toast('Could not create the export.')});
+      return;
+    }
+  }catch(e0){}
+  try{
+    var blob=new Blob([data],{type:'text/csv;charset=utf-8'});
+    var url=URL.createObjectURL(blob);
+    var l=document.createElement('a');l.href=url;l.download=name;document.body.appendChild(l);l.click();l.remove();
+    setTimeout(function(){URL.revokeObjectURL(url)},1000);
+    toast('Export downloaded');
+  }catch(err){toast('Could not create the export.')}
+}
+
+/* ---------- welcome banner ---------- */
+function greetingFor(){var h=new Date().getHours();return h<5?'Good night':h<12?'Good morning':h<17?'Good afternoon':'Good evening'}
+function routineToday(T){
+  var due=S.habits.filter(function(h){return isDue(h,T)});
+  return {total:due.length,done:due.filter(function(h){return isDone(S,h,T)}).length};
+}
+function tradeMonthNet(T){
+  var m=T.slice(0,7),has=false,net=0;
+  S.trading.trades.forEach(function(t){if(t.date.slice(0,7)===m){has=true;net+=t.pnl}});
+  return has?net:null;
+}
+function welcomeHtml(a,T){
+  var chips='',rt=routineToday(T);
+  if(rt.total)chips+='<span class="wl-chip"><b class="num">'+rt.done+'/'+rt.total+'</b> routine done today</span>';
+  var np=S.plans.filter(function(p){return !p.done&&p.date===T}).length;
+  if(np)chips+='<span class="wl-chip"><b class="num">'+np+'</b> '+(np===1?'plan':'plans')+' due today</span>';
+  var tn=tradeMonthNet(T);
+  if(tn!=null)chips+='<span class="wl-chip">Trading <b class="num">'+tmoney(tn,true)+'</b> this month</span>';
+  return '<section class="welcome" aria-label="Welcome"><svg class="wl-deco" viewBox="0 0 150 110" aria-hidden="true"><g fill="#fff" opacity=".16"><rect x="14" y="62" width="18" height="48" rx="4"/><rect x="42" y="44" width="18" height="66" rx="4"/><rect x="70" y="54" width="18" height="56" rx="4"/><rect x="98" y="26" width="18" height="84" rx="4"/></g><polyline points="23,50 51,32 79,42 107,12" fill="none" stroke="#8CF0CB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/><circle cx="107" cy="12" r="5" fill="#8CF0CB"/></svg>'+
+    '<span class="eyebrow">'+esc(parseD(T).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}))+'</span>'+
+    '<h2>Welcome Back<br><span class="wl-name">'+esc(OWNER_NAME)+'</span></h2><p>'+greetingFor()+'. Here is where your day stands.</p>'+
+    (chips?'<div class="wl-chips">'+chips+'</div>':'')+'</section>';
+}
+
+/* ---------- routine ---------- */
+function ringGen(frac,center,sub,color){
+  var r=39,c=2*Math.PI*r,v=c*Math.max(0,Math.min(1,frac));
+  return '<div class="ring" role="img" aria-label="'+esc(center+' '+sub)+'"><svg viewBox="0 0 100 100"><circle class="t" cx="50" cy="50" r="'+r+'"/><circle class="v" cx="50" cy="50" r="'+r+'" style="stroke:'+color+'" stroke-dasharray="'+v.toFixed(1)+' '+c.toFixed(1)+'"/></svg><div class="c"><b>'+esc(center)+'</b><span>'+esc(sub)+'</span></div></div>';
+}
+function habitRow(h,T){
+  var st=habitStreak(S,h,T),r=habitRate(S,h,T,30),dn=isDone(S,h,T);
+  var meta=(st.cur>0?st.cur+'-day streak':'No streak yet')+(r!=null?' · 30 days: '+pct(r)+'%':'');
+  return '<li class="pl'+(dn?' done':'')+'"><button type="button" class="pk" data-htoggle="'+esc(h.id)+'|'+T+'" role="checkbox" aria-checked="'+(dn?'true':'false')+'" aria-label="'+esc(h.name)+(dn?', done. Tap to undo':', not done. Tap to mark done')+'">'+CHECK_SVG+'</button>'+
+    '<span class="pt"><b>'+esc(h.name)+(h.sample?'<span class="ex">example</span>':'')+'</b><span>'+esc(meta)+'</span></span><span></span></li>';
+}
+function viewRoutine(){
+  var T=todayStr(),h='',hs=S.habits;
+  if(!hs.length){
+    h+='<section class="panel"><h2>Build your daily routine</h2><p class="sub">Add the habits you want to repeat. Tick them off each day to build streaks and see how consistent you are.</p><div class="btns"><button class="btn primary" type="button" id="hsug">Add a suggested routine</button></div></section>';
+  }else{
+    var due=hs.filter(function(x){return isDue(x,T)}),dn=due.filter(function(x){return isDone(S,x,T)}).length,frac=due.length?dn/due.length:0;
+    var col=frac>=1?'var(--in)':frac>=.5?'var(--accent)':'var(--warn)';
+    var status=!due.length?'No habits are scheduled today.':dn===due.length?'Every habit done. Keep the chain going.':(due.length-dn)+' left to do. Small steps count.';
+    h+='<section class="panel"><div class="rt-hero"><div><div class="eyebrow">Today · '+esc(shortDate(T))+'</div><h2 class="rt-big">'+(due.length?dn+' of '+due.length+' done':'Rest day')+'</h2><p class="sub" style="margin:0">'+status+'</p></div>'+ringGen(frac,pct(frac)+'%','done',col)+'</div>';
+    PARTS.forEach(function(p){
+      var list=due.filter(function(x){return x.part===p[0]});if(!list.length)return;
+      h+='<div class="rt-part">'+p[1]+'</div><ul class="plist" style="margin-bottom:4px">'+list.map(function(x){return habitRow(x,T)}).join('')+'</ul>';
+    });
+    h+='</section>';
+
+    /* this week */
+    var cols=[];for(var i=6;i>=0;i--)cols.push(addDays(T,-i));
+    h+='<section class="panel"><h2>This week</h2><p class="sub">Tap a circle to log a day or fix one you missed.</p><div class="wkscroll"><div class="wk"><span></span>'+
+      cols.map(function(d){return '<div class="wkh'+(d===T?' t':'')+'">'+DAYNAMES[parseD(d).getDay()]+'<b>'+Number(d.slice(8))+'</b></div>'}).join('');
+    hs.forEach(function(x){
+      h+='<div class="wkn">'+esc(x.name)+'</div>'+cols.map(function(d){
+        if(!schedDay(x,d))return '<span class="wc off" aria-hidden="true">–</span>';
+        var dn2=isDone(S,x,d),cls='wc'+(dn2?' done':d<x.start?' pre':d===T?' today':' miss');
+        return '<button type="button" class="'+cls+'" data-htoggle="'+esc(x.id)+'|'+d+'" aria-label="'+esc(x.name)+', '+esc(shortDate(d))+(dn2?', done':', not done')+'">'+(dn2?CHECK_SVG:'')+'</button>';
+      }).join('');
+    });
+    h+='</div></div></section>';
+
+    /* month consistency */
+    var pk=routMonth.split('-').map(Number),Y=pk[0],M=pk[1],N=dim(Y,M),lead=(new Date(Y,M-1,1).getDay()+6)%7;
+    var perfect=0,sumPct=0,cnt=0,cells='';
+    for(var k=0;k<lead;k++)cells+='<div></div>';
+    for(var d=1;d<=N;d++){
+      var ds=dstr(Y,M,d),dc=ds<=T?dayCompletion(S,ds):null,cls='hc';
+      if(dc){cnt++;sumPct+=dc.pct;if(dc.pct>=1)perfect++;cls+=dc.pct>=1?' hm4':dc.pct>=.75?' hm3':dc.pct>=.4?' hm2':dc.pct>0?' hm1':' zero'}
+      if(ds===T)cls+=' today';
+      cells+='<div class="'+cls+'" title="'+(dc?dc.done+' of '+dc.due+' done':'No habits due')+'">'+d+'</div>';
+    }
+    var bestStreak=Math.max.apply(null,hs.map(function(x){return habitStreak(S,x,T).best}).concat([0]));
+    var curStreak=Math.max.apply(null,hs.map(function(x){return habitStreak(S,x,T).cur}).concat([0]));
+    h+='<section class="panel"><div class="calhead"><div class="month"><button type="button" data-rmonth="-1" aria-label="Previous month">‹</button><span>'+monthName(routMonth)+'</span><button type="button" data-rmonth="1" aria-label="Next month"'+(routMonth>=T.slice(0,7)?' disabled':'')+'>›</button></div></div>'+
+      '<h2 style="margin-bottom:4px">Consistency</h2><p class="sub">Darker means more of the day\'s habits were done.</p><div class="hmgrid">'+cells+'</div>'+
+      '<div class="hmleg"><span>Less</span><i style="background:var(--surface2);border:1px solid var(--line)"></i><i style="background:var(--hm1)"></i><i style="background:var(--hm2)"></i><i style="background:var(--hm3)"></i><i style="background:var(--hm4)"></i><span>All done</span></div>'+
+      '<div class="minis"><div class="tile"><span class="eyebrow">Perfect days</span><span class="num">'+perfect+'</span></div><div class="tile"><span class="eyebrow">Average</span><span class="num">'+(cnt?pct(sumPct/cnt)+'%':'–')+'</span></div><div class="tile"><span class="eyebrow">Current streak</span><span class="num">'+curStreak+(curStreak===1?' day':' days')+'</span></div><div class="tile"><span class="eyebrow">Best streak</span><span class="num">'+bestStreak+(bestStreak===1?' day':' days')+'</span></div></div></section>';
+
+    /* habit strength */
+    h+='<section class="panel"><h2>Habit strength</h2><p class="sub">Completion over the last 30 scheduled days.</p><div class="cats">'+
+      hs.map(function(x){
+        var r=habitRate(S,x,T,30),st=habitStreak(S,x,T),w=r==null?0:pct(r);
+        return '<div class="cat"><div class="row"><span class="n">'+esc(x.name)+'</span><span class="a num">'+(r==null?'–':w+'%')+' · streak '+st.cur+' · best '+st.best+'</span></div><div class="track" role="img" aria-label="'+esc(x.name)+' '+w+' percent"><div class="fill'+(r!=null&&r<.5?' over':'')+'" style="width:'+w+'%"></div></div></div>';
+      }).join('')+'</div></section>';
+  }
+
+  /* manage */
+  var ed=habitEdit?hs.filter(function(x){return x.id===habitEdit})[0]:null,days=ed?ed.days:ALLDAYS;
+  h+='<section class="panel"><h2>Manage routine</h2><p class="sub">Choose which days each habit counts. Days it is not scheduled never break a streak.</p>'+
+    (hs.length?'<div style="margin-bottom:14px">'+hs.map(function(x){
+      return '<div class="hrow"><b>'+esc(x.name)+'</b><span class="pb" style="grid-column:auto;margin:0"><button type="button" class="ib" data-hedit="'+esc(x.id)+'">Edit</button><button type="button" class="ib dl" data-hdel="'+esc(x.id)+'">Delete</button></span><span class="m">'+esc(PARTS.filter(function(p){return p[0]===x.part})[0][1]+' · '+daysLabel(x.days))+'</span></div>';
+    }).join('')+'</div>':'')+
+    '<h3 class="pf-title">'+(ed?'Edit habit':'Add a habit')+'</h3><form class="form" id="hf" novalidate>'+
+    '<div><label for="hn">Habit</label><input id="hn" type="text" maxlength="60" placeholder="e.g. Walk 20 minutes" value="'+esc(ed?ed.name:'')+'"></div>'+
+    '<div><label for="hp">Time of day</label><select id="hp">'+PARTS.map(function(p){return '<option value="'+p[0]+'"'+((ed?ed.part:'morning')===p[0]?' selected':'')+'>'+p[1]+'</option>'}).join('')+'</select></div>'+
+    '<div><label>Repeat on</label><div class="dchips" id="hdays">'+[1,2,3,4,5,6,0].map(function(d){return '<button type="button" class="dchip" data-hday="'+d+'" aria-pressed="'+(days.indexOf(d)>=0)+'">'+DAYNAMES[d]+'</button>'}).join('')+'</div></div>'+
+    '<p class="err" id="herr" role="alert"></p><div class="btns"><button class="btn primary" type="submit">'+(ed?'Save changes':'Add habit')+'</button>'+(ed?'<button class="btn" type="button" id="hcx">Cancel</button>':'')+'</div></form></section>';
+  return h;
+}
+function wireRoutine(){
+  var q=function(s){return document.querySelectorAll(s)};
+  q('[data-htoggle]').forEach(function(b){b.onclick=function(){
+    var p=b.dataset.htoggle.split('|'),hb=S.habits.filter(function(x){return x.id===p[0]})[0];if(!hb)return;
+    var l=S.habitLog[p[1]]||(S.habitLog[p[1]]=[]),ix=l.indexOf(hb.id);
+    if(ix>=0)l.splice(ix,1);else{l.push(hb.id);if(p[1]<hb.start)hb.start=p[1]}
+    if(!l.length)delete S.habitLog[p[1]];
+    touch();render();
+    if(ix<0){var r=routineToday(todayStr());if(p[1]===todayStr()&&r.total&&r.done===r.total)toast('Every habit done today')}
+  }});
+  q('[data-rmonth]').forEach(function(b){b.onclick=function(){routMonth=addMonth(routMonth,Number(b.dataset.rmonth));render()}});
+  q('[data-hedit]').forEach(function(b){b.onclick=function(){habitEdit=b.dataset.hedit;render();var n=document.getElementById('hn');if(n){n.scrollIntoView({block:'center'});n.focus()}}});
+  q('[data-hdel]').forEach(function(b){b.onclick=function(){
+    if(b.dataset.arm){S.habits=S.habits.filter(function(x){return x.id!==b.dataset.hdel});if(habitEdit===b.dataset.hdel)habitEdit=null;touch();render();toast('Habit deleted');return}
+    b.dataset.arm='1';b.textContent='Tap again';setTimeout(function(){if(document.body.contains(b)){delete b.dataset.arm;b.textContent='Delete'}},3500)}});
+  q('[data-hday]').forEach(function(b){b.onclick=function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')}});
+  var cx=document.getElementById('hcx');if(cx)cx.onclick=function(){habitEdit=null;render()};
+  var sg=document.getElementById('hsug');
+  if(sg)sg.onclick=function(){
+    var T=todayStr();
+    [['Wake up early','morning',ALLDAYS],['Exercise 30 minutes','morning',[1,2,3,4,5]],['Log today\'s spending','evening',ALLDAYS],['Read 20 minutes','evening',ALLDAYS],['Plan tomorrow','evening',ALLDAYS]].forEach(function(r){
+      S.habits.push({id:uid(),name:r[0],part:r[1],days:r[2].slice(),start:T,sample:false})});
+    touch();render();toast('Suggested routine added. Edit it any time.');
+  };
+  var f=document.getElementById('hf');
+  if(f)f.onsubmit=function(ev){
+    ev.preventDefault();
+    var name=document.getElementById('hn').value.trim(),part=document.getElementById('hp').value,err=document.getElementById('herr');
+    var days=[];document.querySelectorAll('[data-hday]').forEach(function(b){if(b.getAttribute('aria-pressed')==='true')days.push(Number(b.dataset.hday))});
+    if(!name){err.textContent='Give the habit a name.';document.getElementById('hn').focus();return}
+    if(!days.length){err.textContent='Pick at least one day.';return}
+    var old=habitEdit?S.habits.filter(function(x){return x.id===habitEdit})[0]:null;
+    if(old){old.name=name;old.part=part;old.days=days}
+    else S.habits.push({id:uid(),name:name,part:part,days:days,start:todayStr(),sample:false});
+    touch();habitEdit=null;render();toast(old?'Habit updated':'Habit added');
+  };
+}
+
+/* ---------- trading journal ---------- */
+function tsym(){var c=S.trading.currency;return c==='USD'?'$':c==='EUR'?'€':c==='GBP'?'£':c+' '}
+function tmoney(n,sign){
+  if(tpriv)return '••••';
+  var a=Math.abs(n),dec=a>=10000?0:2;
+  var s=new Intl.NumberFormat('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec}).format(a);
+  return (n<0?'−':(sign&&n>0?'+':''))+tsym()+s;
+}
+function tval(n,sign){
+  if(tview==='$')return tmoney(n,sign);
+  if(tpriv)return '••••';
+  return (n<0?'−':(sign&&n>0?'+':''))+Math.abs(n).toFixed(2)+(tview==='%'?'%':'R');
+}
+function tcompact(v){
+  if(tpriv)return '•••';
+  var sg=v>0?'+':v<0?'−':'';
+  return tview==='$'?sg+compact(Math.abs(v)):sg+Math.abs(v).toFixed(1)+(tview==='%'?'%':'R');
+}
+function tradeV(t){
+  if(tview==='$')return t.pnl;
+  if(tview==='%')return S.trading.balance>0?t.pnl/S.trading.balance*100:0;
+  return t.risk>0?t.pnl/t.risk:null;
+}
+function rangeStart(T){return trange==='month'?T.slice(0,7)+'-01':trange==='30'?addDays(T,-29):trange==='7'?addDays(T,-6):'0000-00-00'}
+var RANGE_LABEL={month:'this month','30':'last 30 days','7':'last 7 days',all:'all time'};
+function donut(parts){
+  var tot=parts.reduce(function(s,p){return s+p.v},0),acc=0,segs='';
+  if(tot>0)parts.forEach(function(p){
+    if(p.v<=0)return;var len=p.v/tot*100;
+    segs+='<circle cx="21" cy="21" r="15.9155" fill="none" style="stroke:'+p.c+'" stroke-width="5" stroke-dasharray="'+len.toFixed(2)+' '+(100-len).toFixed(2)+'" stroke-dashoffset="'+(25-acc).toFixed(2)+'"/>';acc+=len;
+  });
+  return '<svg class="gauge" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.9155" fill="none" style="stroke:var(--line)" stroke-width="5"/>'+segs+'</svg>';
+}
+function radarSvg(comps){
+  var cx=150,cy=112,R=64,n=comps.length,g='',pts=[],lbl='';
+  function P(i,f){var a=(-90+360/n*i)*Math.PI/180;return [cx+Math.cos(a)*R*f,cy+Math.sin(a)*R*f]}
+  [.25,.5,.75,1].forEach(function(f){var s=[];for(var i=0;i<n;i++){var p=P(i,f);s.push(p[0].toFixed(1)+','+p[1].toFixed(1))}g+='<polygon points="'+s.join(' ')+'" fill="none" style="stroke:var(--line)" stroke-width="1"/>'});
+  for(var i=0;i<n;i++){
+    var o=P(i,1),v=P(i,comps[i].val/100),t=P(i,1.24);
+    g+='<line x1="'+cx+'" y1="'+cy+'" x2="'+o[0].toFixed(1)+'" y2="'+o[1].toFixed(1)+'" style="stroke:var(--line)" stroke-width="1"/>';
+    pts.push(v[0].toFixed(1)+','+v[1].toFixed(1));
+    var anchor=t[0]<cx-4?'end':t[0]>cx+4?'start':'middle';
+    lbl+='<text x="'+t[0].toFixed(1)+'" y="'+(t[1]+3).toFixed(1)+'" text-anchor="'+anchor+'">'+esc(comps[i].label)+'</text>';
+  }
+  return '<svg class="radar" viewBox="0 0 300 224" role="img" aria-label="Trader score breakdown">'+g+'<polygon points="'+pts.join(' ')+'" style="fill:var(--accent);fill-opacity:.22;stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/>'+lbl+'</svg>';
+}
+function tchart(kind,vals,dates){
+  var n=vals.length;
+  if(!n)return '<p class="empty">No trades in this period.</p>';
+  var W=360,H=170,L=44,Rr=8,Tp=10,B=22,pw=W-L-Rr,ph=H-Tp-B;
+  var lo=Math.min(0,Math.min.apply(null,vals)),hi=Math.max(0,Math.max.apply(null,vals));
+  if(hi===lo)hi=lo+1;
+  var pad=(hi-lo)*.1;hi+=pad;if(lo<0)lo-=pad;
+  function y(v){return Tp+ph-(v-lo)/(hi-lo)*ph}
+  function xc(i){return L+(i+.5)*pw/n}
+  var tickVals=[hi,0];if(lo<0)tickVals.push(lo);
+  var g='',tf=function(v){return tpriv?'':(tview==='$'?compact(v):v.toFixed(1))};
+  tickVals.forEach(function(t){g+='<line class="'+(t===0?'zero':'grid')+'" x1="'+L+'" x2="'+(W-Rr)+'" y1="'+y(t).toFixed(1)+'" y2="'+y(t).toFixed(1)+'"/><text x="'+(L-5)+'" y="'+(y(t)+3).toFixed(1)+'" text-anchor="end">'+tf(t)+'</text>'});
+  var body='';
+  if(kind==='line'){
+    var pts=vals.map(function(v,i){return xc(i).toFixed(1)+','+y(v).toFixed(1)});
+    var col=vals[n-1]>=0?'var(--in)':'var(--out)';
+    body='<g style="color:'+col+'"><path class="ar" d="M'+xc(0).toFixed(1)+','+y(0).toFixed(1)+' L'+pts.join(' L')+' L'+xc(n-1).toFixed(1)+','+y(0).toFixed(1)+' Z"/><path class="ln" d="M'+pts.join(' L')+'"/><circle cx="'+xc(n-1).toFixed(1)+'" cy="'+y(vals[n-1]).toFixed(1)+'" r="4" fill="currentColor"/></g>';
+  }else{
+    var bw=Math.max(3,Math.min(18,pw/n*.7));
+    vals.forEach(function(v,i){
+      var y0=y(0),y1=y(v),top=Math.min(y0,y1),h=Math.max(1,Math.abs(y1-y0));
+      body+='<rect class="'+(v>=0?'pos':'neg')+'" x="'+(xc(i)-bw/2).toFixed(1)+'" y="'+top.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2"><title>'+esc(shortDate(dates[i]))+': '+esc(tval(v,true))+'</title></rect>';
+    });
+  }
+  var xl='',idx=n===1?[0]:n===2?[0,1]:[0,Math.floor((n-1)/2),n-1];
+  idx.forEach(function(i,k){xl+='<text x="'+xc(i).toFixed(1)+'" y="'+(H-6)+'" text-anchor="'+(k===0&&n>1?'start':k===idx.length-1&&n>1?'end':'middle')+'">'+esc(dayLabel(dates[i]))+'</text>'});
+  return '<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(kind==='line'?'Cumulative':'Daily')+' profit and loss">'+g+body+xl+'</svg>';
+}
+function tcalendar(){
+  var pk=tcalKey.split('-').map(Number),Y=pk[0],M=pk[1],N=dim(Y,M),lead=(new Date(Y,M-1,1).getDay()+6)%7,T=todayStr();
+  var daily={},cnt={},monthTot=0,tradeDays=0;
+  S.trading.trades.forEach(function(t){
+    if(t.date.slice(0,7)!==tcalKey)return;var v=tradeV(t);if(v==null)return;
+    if(daily[t.date]==null){daily[t.date]=0;cnt[t.date]=0;tradeDays++}
+    daily[t.date]+=v;cnt[t.date]++;monthTot+=v;
+  });
+  var cells=[],i;
+  for(i=0;i<lead;i++)cells.push(null);
+  for(var d=1;d<=N;d++)cells.push(dstr(Y,M,d));
+  while(cells.length%7)cells.push(null);
+  var h='<div class="sumline"><div class="month"><button type="button" data-tcal="-1" aria-label="Previous month">‹</button><span>'+monthName(tcalKey)+'</span><button type="button" data-tcal="1" aria-label="Next month"'+(tcalKey>=T.slice(0,7)?' disabled':'')+'>›</button></div><span class="num '+(monthTot>=0?'pos':'neg')+'">'+(tradeDays?tval(monthTot,true):'–')+'</span></div>';
+  h+='<div class="tcal">'+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(function(n){return '<div class="dow">'+n+'</div>'}).join('')+'<div class="dow">Week</div>';
+  for(var r=0;r<cells.length/7;r++){
+    var wk=0,wkHas=false;
+    for(var c=0;c<7;c++){
+      var ds=cells[r*7+c];
+      if(!ds){h+='<div class="tc blank"></div>';continue}
+      var v=daily[ds],cls='tc'+(v>0?' win':v<0?' loss':'')+(ds===tday?' sel':'')+(ds===T?' today':'');
+      if(v!=null){wk+=v;wkHas=true}
+      h+='<button type="button" class="'+cls+'" data-tday="'+ds+'" aria-pressed="'+(ds===tday)+'" aria-label="'+esc(shortDate(ds))+(v!=null?', '+cnt[ds]+' trades, '+(tpriv?'hidden':tval(v,true)):', no trades')+'"><span class="d">'+Number(ds.slice(8))+'</span><span class="v">'+(v!=null?tcompact(v):'')+'</span></button>';
+    }
+    h+='<div class="tw'+(wkHas?(wk>0?' win':wk<0?' loss':''):'')+'"><span class="d">W'+(r+1)+'</span><span class="v">'+(wkHas?tcompact(wk):'')+'</span></div>';
+  }
+  return h+'</div><div class="callegend"><span><i style="background:var(--in)"></i>Winning day</span><span><i style="background:var(--out)"></i>Losing day</span><span>Tap a day to filter the trade log</span></div>';
+}
+function tradeRow(t){
+  var v=tradeV(t),cls=t.pnl>0?'win':t.pnl<0?'loss':'',R=t.risk>0?(t.pnl/t.risk):null;
+  var tags=(t.tags||[]).join(', ');
+  return '<button type="button" class="trow '+cls+'" data-tedit="'+esc(t.id)+'"><span class="bar"></span><span class="tt"><b>'+esc(t.symbol)+'<span class="side">'+(t.side==='short'?'Short':'Long')+'</span>'+(t.sample?'<span class="ex">example</span>':'')+'</b><span>'+esc(shortDate(t.date)+(t.setup?' · '+t.setup:''))+'</span>'+(tags?'<span>'+esc(tags)+'</span>':'')+'</span>'+
+    '<span class="pv"><span class="num">'+tmoney(t.pnl,true)+'</span>'+(R!=null&&!tpriv?'<small class="num">'+(R>0?'+':R<0?'−':'')+Math.abs(R).toFixed(2)+'R</small>':'')+'</span></button>';
+}
+function viewTrading(){
+  var T=todayStr(),tr=S.trading,all=tr.trades,h='';
+  var tool='<div class="ttool"><div class="chips">'+[['month','This month'],['30','30 days'],['7','7 days'],['all','All time']].map(function(c){return '<button type="button" data-trange="'+c[0]+'" aria-pressed="'+(trange===c[0])+'">'+c[1]+'</button>'}).join('')+'</div>'+
+    '<div class="ttool2"><div class="seg three" role="group" aria-label="Show values as">'+[['$','Money'],['%','%'],['R','R']].map(function(c){return '<button type="button" class="neutral" data-tview="'+c[0]+'" aria-pressed="'+(tview===c[0])+'">'+c[1]+'</button>'}).join('')+'</div><button class="btn" type="button" id="tpriv" aria-pressed="'+tpriv+'">'+(tpriv?'Show numbers':'Hide numbers')+'</button></div></div>';
+  var settings='<section class="panel"><h2>Account settings</h2><p class="sub">Your starting balance and currency drive the % view and drawdown.</p><div class="fields"><div class="field"><label for="tcur">Currency</label><select id="tcur">'+['USD','EUR','GBP','RWF','KES','UGX','TZS'].map(function(c){return '<option'+(c===tr.currency?' selected':'')+'>'+c+'</option>'}).join('')+'</select></div>'+
+    '<div class="field"><label for="tbal">Starting balance</label><input id="tbal" class="num" type="number" inputmode="decimal" min="0" value="'+tr.balance+'"></div>'+
+    '<div class="field"><label for="tsetup">New setup name<small>'+esc(tr.setups.join(', '))+'</small></label><input id="tsetup" type="text" maxlength="30" placeholder="e.g. Range fade"></div></div>'+
+    '<div class="btns" style="margin-top:12px"><button class="btn" type="button" id="tsetupadd">Add setup</button><button class="btn" type="button" id="texp">Export trades CSV</button></div></section>';
+
+  if(!all.length){
+    h+=tool+'<section class="panel"><h2>Your trading journal is empty</h2><p class="sub">Log each trade with its result, setup and notes. You will get win rate, profit factor, an equity curve, a P&amp;L calendar and a report on what your mistakes cost.</p><div class="btns"><button class="btn primary" type="button" id="tfirst">Add your first trade</button></div></section>'+settings;
+    return h;
+  }
+  var start=rangeStart(T),inR=all.filter(function(t){return t.date>=start&&t.date<=T});
+  var base0=tr.balance+sumPnl(all.filter(function(t){return t.date<start}));
+  var sd=tstats(inR.map(function(t){return {date:t.date,v:t.pnl,id:t.id}}),base0);
+  var sv=sd;
+  if(tview!=='$')sv=tstats(inR.map(function(t){return {date:t.date,v:tradeV(t),id:t.id}}).filter(function(x){return x.v!=null}),0);
+  var bal=tr.balance+sumPnl(all),balChg=tr.balance>0?(bal-tr.balance)/tr.balance*100:0;
+  h+=tool;
+  h+='<section class="panel tnet"><div class="eyebrow">Net P&amp;L · '+RANGE_LABEL[trange]+'</div><div class="big '+(sv.net>=0?'pos':'neg')+'">'+(sv.n?tval(sv.net,true):'–')+'</div><div class="tsub">'+sd.n+' '+(sd.n===1?'trade':'trades')+' · '+sd.days.length+' trading '+(sd.days.length===1?'day':'days')+'</div>'+
+    '<div class="tsub" style="margin-top:6px">Account balance <b class="num" style="color:var(--ink)">'+tmoney(bal,false)+'</b> <span class="num '+(balChg>=0?'pos':'neg')+'">'+(tpriv?'':(balChg>=0?'+':'−')+Math.abs(balChg).toFixed(1)+'%')+'</span> since start</div></section>';
+  if(!inR.length){
+    h+='<section class="panel"><p class="empty">No trades in '+RANGE_LABEL[trange]+'. Try All time or tap + Trade.</p></section>';
+  }else{
+    var pfTxt=sv.pf===Infinity?'∞':sv.pf.toFixed(2);
+    h+='<div class="kgrid">'+
+      '<div class="kcard"><div><span class="eyebrow">Win rate</span><span class="num v">'+sv.winPct.toFixed(1)+'%</span></div>'+donut([{v:sv.w,c:'var(--in)'},{v:sv.be,c:'var(--muted)'},{v:sv.l,c:'var(--out)'}])+'<small>'+sv.w+' wins · '+sv.l+' losses'+(sv.be?' · '+sv.be+' breakeven':'')+'</small></div>'+
+      '<div class="kcard"><div><span class="eyebrow">Profit factor</span><span class="num v">'+pfTxt+'</span></div>'+donut([{v:sv.gw,c:'var(--in)'},{v:sv.gl,c:'var(--out)'}])+'<small>Above 1.0 means profitable</small></div>'+
+      '<div class="kcard"><div><span class="eyebrow">Day win %</span><span class="num v">'+sv.dayWinPct.toFixed(1)+'%</span></div>'+donut([{v:sv.dw,c:'var(--in)'},{v:sv.dl,c:'var(--out)'}])+'<small>'+sv.dw+' green · '+sv.dl+' red days</small></div>'+
+      '<div class="kcard"><div><span class="eyebrow">Avg win / loss</span><span class="num v">'+(sv.ratio===Infinity?'∞':sv.ratio.toFixed(2))+'</span></div><span></span><div class="wlbar"><i style="background:var(--in);width:'+(sv.avgWin+sv.avgLoss>0?Math.max(8,sv.avgWin/Math.max(sv.avgWin,sv.avgLoss)*100):0).toFixed(0)+'%"></i><i style="background:var(--out);width:'+(sv.avgWin+sv.avgLoss>0?Math.max(8,sv.avgLoss/Math.max(sv.avgWin,sv.avgLoss)*100):0).toFixed(0)+'%"></i></div><small>'+tval(sv.avgWin,false)+' win · '+tval(-sv.avgLoss,false)+' loss</small></div></div>';
+
+    var sc=traderScore(sd);
+    h+='<section class="panel"><h2>Trader score</h2><p class="sub">Six measures blended into one number out of 100. Filled area closer to the edge is better.</p><div class="scoregrid">'+radarSvg(sc.comps)+'<div class="scorebadge"><span class="num">'+sc.score+'</span><span><b>'+sc.label+'</b><br><span style="color:var(--muted);font-size:13px">Weakest area: '+esc(sc.weak)+'</span></span></div></div></section>';
+
+    h+='<section class="panel"><h2>Key numbers</h2><p class="sub">Selected period.</p><div class="tiles">'+
+      '<div class="tile"><span class="eyebrow">Expectancy</span><span class="num">'+tval(sv.expect,true)+'</span></div>'+
+      '<div class="tile out"><span class="eyebrow">Max drawdown</span><span class="num">'+(tpriv?'••••':tmoney(-sd.maxDD,false)+' ('+sd.maxDDPct.toFixed(1)+'%)')+'</span></div>'+
+      '<div class="tile"><span class="eyebrow">Win streak</span><span class="num">'+sv.tradeStreak+(sv.tradeStreak===1?' trade':' trades')+'</span></div>'+
+      '<div class="tile"><span class="eyebrow">Green days</span><span class="num">'+sv.dayStreak+(sv.dayStreak===1?' day':' days')+' in a row</span></div>'+
+      '<div class="tile in"><span class="eyebrow">Best day</span><span class="num">'+tval(sv.dayVals.length?Math.max.apply(null,sv.dayVals):0,true)+'</span></div>'+
+      '<div class="tile out"><span class="eyebrow">Worst day</span><span class="num">'+tval(sv.dayVals.length?Math.min.apply(null,sv.dayVals):0,true)+'</span></div></div></section>';
+
+    var cumP=[],run=0;sv.dayVals.forEach(function(v){run+=v;cumP.push(run)});
+    h+='<section class="panel"><h2>Cumulative P&amp;L</h2><p class="sub">How your result builds up, trading day by trading day.</p>'+tchart('line',cumP,sv.days)+'</section>';
+    h+='<section class="panel"><h2>Net daily P&amp;L</h2><p class="sub">Each bar is one trading day.</p>'+tchart('bar',sv.dayVals,sv.days)+'</section>';
+  }
+  h+='<section class="panel"><h2>P&amp;L calendar</h2><p class="sub">Daily results with a weekly total on the right.</p>'+tcalendar()+'</section>';
+
+  /* trade log */
+  var list=all.map(function(t,i){return {t:t,i:i}}).filter(function(o){
+    var t=o.t;
+    if(tday)return t.date===tday;
+    if(!(t.date>=start&&t.date<=T))return false;
+    return tfilt==='all'||(tfilt==='win'&&t.pnl>0)||(tfilt==='loss'&&t.pnl<0);
+  }).sort(function(a,b){return a.t.date<b.t.date?1:a.t.date>b.t.date?-1:b.i-a.i}).map(function(o){return o.t});
+  h+='<section class="panel"><div class="sumline"><h2>Trade log</h2><span class="num" style="font-size:14px;color:var(--muted)">'+list.length+(list.length===1?' trade':' trades')+'</span></div>';
+  if(tday)h+='<p class="sub">Showing '+esc(longDate(tday))+'. <button type="button" class="lnk" id="tclr">Show all</button></p>';
+  else h+='<div class="chips">'+[['all','All'],['win','Wins'],['loss','Losses']].map(function(c){return '<button type="button" data-tfilt="'+c[0]+'" aria-pressed="'+(tfilt===c[0])+'">'+c[1]+'</button>'}).join('')+'</div>';
+  h+=list.length?'<div class="rows">'+list.slice(0,tshow).map(tradeRow).join('')+'</div>'+(list.length>tshow?'<button type="button" class="lnk" id="tmore">Show '+Math.min(12,list.length-tshow)+' more</button>':''):'<p class="empty">No trades to show.</p>';
+  h+='</section>';
+
+  /* insights */
+  if(inR.length){
+    var bs={};
+    inR.forEach(function(t){var k=t.setup||'Other',o=bs[k]||(bs[k]={n:0,w:0,net:0});o.n++;if(t.pnl>0)o.w++;var v=tradeV(t);if(v!=null)o.net+=v});
+    var rows=Object.keys(bs).map(function(k){return {k:k,o:bs[k]}}).sort(function(a,b){return b.o.net-a.o.net});
+    h+='<section class="panel"><h2>Results by setup</h2><p class="sub">Which of your setups actually pay.</p><div class="tbl"><div class="r h"><span>Setup</span><span>Trades</span><span>Win %</span><span>Net</span></div>'+
+      rows.map(function(r){return '<div class="r"><span>'+esc(r.k)+'</span><span class="num">'+r.o.n+'</span><span class="num">'+pct(r.o.w/r.o.n)+'%</span><span class="num '+(r.o.net>=0?'pos':'neg')+'">'+tval(r.o.net,true)+'</span></div>'}).join('')+'</div></section>';
+
+    var wd={};inR.forEach(function(t){var d=parseD(t.date).getDay(),v=tradeV(t);if(v==null)return;wd[d]=(wd[d]||0)+v});
+    var order=[1,2,3,4,5,6,0].filter(function(d){return wd[d]!=null}),mx=Math.max.apply(null,order.map(function(d){return Math.abs(wd[d])}).concat([1e-9]));
+    h+='<section class="panel"><h2>Results by weekday</h2><p class="sub">Find the days you trade best and the days to skip.</p>'+order.map(function(d){
+      var v=wd[d],w=Math.abs(v)/mx*100;
+      return '<div class="dbar"><span>'+DAYNAMES[d]+'</span><span class="tr"><i style="left:0;width:'+w.toFixed(1)+'%;background:'+(v>=0?'var(--in)':'var(--out)')+'"></i></span><span class="num '+(v>=0?'pos':'neg')+'">'+tval(v,true)+'</span></div>';
+    }).join('')+'</section>';
+
+    var tagStat={},noMistake=0,mistakeLoss=0;
+    inR.forEach(function(t){
+      var ms=(t.tags||[]).filter(function(g){return g!=='Followed plan'});
+      if(!ms.length)noMistake++;
+      ms.forEach(function(g){var o=tagStat[g]||(tagStat[g]={n:0,net:0});o.n++;var v=tradeV(t);if(v!=null)o.net+=v});
+      if(ms.length&&t.pnl<0)mistakeLoss+=-t.pnl;
+    });
+    var tg=Object.keys(tagStat).sort(function(a,b){return tagStat[a].net-tagStat[b].net});
+    h+='<section class="panel"><h2>Discipline report</h2><p class="sub">Trades with no rule-breaking tag: <b class="num" style="color:var(--ink)">'+pct(noMistake/inR.length)+'%</b>. Losses on trades where you broke a rule: <b class="num neg">'+(tpriv?'••••':tmoney(mistakeLoss,false))+'</b>.</p>'+
+      (tg.length?'<div class="tbl"><div class="r h"><span>Mistake</span><span>Count</span><span></span><span>Net</span></div>'+tg.map(function(g){return '<div class="r"><span>'+esc(g)+'</span><span class="num">'+tagStat[g].n+'</span><span></span><span class="num '+(tagStat[g].net>=0?'pos':'neg')+'">'+tval(tagStat[g].net,true)+'</span></div>'}).join('')+'</div>':'<p class="empty">No mistakes tagged in this period. Tag them when you log a trade.</p>')+'</section>';
+  }
+  h+=settings;
+  return h;
+}
+function wireTrading(){
+  var q=function(s){return document.querySelectorAll(s)};
+  q('[data-trange]').forEach(function(b){b.onclick=function(){trange=b.dataset.trange;tshow=12;render()}});
+  q('[data-tview]').forEach(function(b){b.onclick=function(){tview=b.dataset.tview;render()}});
+  var pv=document.getElementById('tpriv');if(pv)pv.onclick=function(){tpriv=!tpriv;render()};
+  q('[data-tcal]').forEach(function(b){b.onclick=function(){tcalKey=addMonth(tcalKey,Number(b.dataset.tcal));render()}});
+  q('[data-tday]').forEach(function(b){b.onclick=function(){tday=tday===b.dataset.tday?null:b.dataset.tday;tshow=12;render();if(tday){var el=document.getElementById('tclr');if(el)el.scrollIntoView({block:'center'})}}});
+  q('[data-tfilt]').forEach(function(b){b.onclick=function(){tfilt=b.dataset.tfilt;tshow=12;render()}});
+  q('[data-tedit]').forEach(function(b){b.onclick=function(){openTrade(b.dataset.tedit)}});
+  var el=document.getElementById('tclr');if(el)el.onclick=function(){tday=null;render()};
+  el=document.getElementById('tmore');if(el)el.onclick=function(){tshow+=12;render()};
+  el=document.getElementById('tfirst');if(el)el.onclick=function(){openTrade(null)};
+  el=document.getElementById('tcur');if(el)el.onchange=function(){S.trading.currency=el.value;touch();render()};
+  el=document.getElementById('tbal');if(el)el.onchange=function(){S.trading.balance=Math.max(0,Number(el.value)||0);touch();toast('Starting balance saved');render()};
+  el=document.getElementById('tsetupadd');if(el)el.onclick=function(){
+    var i=document.getElementById('tsetup'),v=i.value.trim();
+    if(!v){toast('Type a setup name first.');return}
+    if(S.trading.setups.indexOf(v)<0){S.trading.setups.push(v);touch();toast('Setup added');render()}else toast('That setup already exists.');
+  };
+  el=document.getElementById('texp');if(el)el.onclick=function(){
+    var qv=function(v){v=String(v==null?'':v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+    var rows=[['Date','Symbol','Side','Setup','P&L','Risk (1R)','R multiple','Tags','Rating','Notes']].concat(S.trading.trades.slice().sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:0}).map(function(t){
+      return [t.date,t.symbol,t.side,t.setup,t.pnl,t.risk||'',t.risk>0?(t.pnl/t.risk).toFixed(2):'',(t.tags||[]).join('; '),t.rating||'',t.notes||'']}));
+    saveFile('trades-'+todayStr()+'.csv',rows.map(function(r){return r.map(qv).join(',')}).join('\n'));
+  };
+}
+
+/* ---------- trade sheet ---------- */
+function openTrade(id){
+  var e=id?S.trading.trades.filter(function(x){return x.id===id})[0]:null;
+  tsheet={id:e?e.id:null,date:e?e.date:todayStr(),symbol:e?e.symbol:'',side:e?e.side:'long',res:e?(e.pnl>0?'win':e.pnl<0?'loss':'be'):'win',
+    amount:e?String(Math.abs(e.pnl)):'',entry:e&&e.entry!=null?String(e.entry):'',exit:e&&e.exit!=null?String(e.exit):'',size:e&&e.size!=null?String(e.size):'',
+    risk:e&&e.risk>0?String(e.risk):'',setup:e?e.setup:S.trading.setups[0],tags:e?(e.tags||[]).slice():[],rating:e?(e.rating||0):0,notes:e?(e.notes||''):'',del:false};
+  renderTSheet(true);
+}
+function closeTSheet(){tsheet=null;document.getElementById('sheetRoot').innerHTML='';document.getElementById('fab').focus()}
+function numOrNaN(v){v=String(v).replace(/[,\s]/g,'');return v===''?NaN:Number(v)}
+function renderTSheet(focus){
+  var s=tsheet;if(!s)return;
+  var syms={};S.trading.trades.forEach(function(t){syms[t.symbol]=1});
+  var setups=S.trading.setups.slice();if(s.setup&&setups.indexOf(s.setup)<0)setups.push(s.setup);
+  var h='<div class="scrim" id="tscrim"><div class="sheet" role="dialog" aria-modal="true" aria-label="'+(s.id?'Edit trade':'Add trade')+'"><h2>'+(s.id?'Edit trade':'Add a trade')+'</h2><form class="form" id="tf" novalidate>'+
+    '<div class="two"><div><label for="tsy">Symbol</label><input id="tsy" type="text" list="tsyms" maxlength="20" autocapitalize="characters" autocomplete="off" placeholder="EURUSD" value="'+esc(s.symbol)+'"><datalist id="tsyms">'+Object.keys(syms).map(function(k){return '<option value="'+esc(k)+'">'}).join('')+'</datalist></div>'+
+    '<div><label for="tdt">Date</label><input id="tdt" type="date" value="'+esc(s.date)+'" max="'+todayStr()+'"></div></div>'+
+    '<div><label>Direction</label><div class="seg" role="group"><button type="button" class="neutral" data-tside="long" aria-pressed="'+(s.side==='long')+'">Long (buy)</button><button type="button" class="neutral" data-tside="short" aria-pressed="'+(s.side==='short')+'">Short (sell)</button></div></div>'+
+    '<div><label>Result</label><div class="seg three" role="group"><button type="button" class="in" data-tres="win" aria-pressed="'+(s.res==='win')+'">Win</button><button type="button" class="out" data-tres="loss" aria-pressed="'+(s.res==='loss')+'">Loss</button><button type="button" class="neutral" data-tres="be" aria-pressed="'+(s.res==='be')+'">Breakeven</button></div></div>'+
+    (s.res!=='be'?'<div><label for="tam">Amount ('+esc(S.trading.currency)+')</label><input id="tam" class="num amtbox" type="text" inputmode="decimal" autocomplete="off" placeholder="0" value="'+esc(s.amount)+'"></div>':'')+
+    '<div><label for="tsu">Setup</label><select id="tsu">'+setups.map(function(x){return '<option'+(x===s.setup?' selected':'')+'>'+esc(x)+'</option>'}).join('')+'</select></div>'+
+    '<div class="two"><div><label for="ten">Entry price (optional)</label><input id="ten" class="num" type="text" inputmode="decimal" value="'+esc(s.entry)+'"></div><div><label for="tex">Exit price (optional)</label><input id="tex" class="num" type="text" inputmode="decimal" value="'+esc(s.exit)+'"></div></div>'+
+    '<div class="two"><div><label for="tsz">Size or lots (optional)</label><input id="tsz" class="num" type="text" inputmode="decimal" value="'+esc(s.size)+'"></div><div><label for="tri">Risk, 1R (optional)</label><input id="tri" class="num" type="text" inputmode="decimal" value="'+esc(s.risk)+'"></div></div>'+
+    '<p class="jr-hint" style="margin:-4px 0 0">Leave the amount empty to work it out from entry, exit and size.</p>'+
+    '<div><label>Tags</label><div class="tagrow">'+TRADE_TAGS.map(function(g,i){return '<button type="button" class="tgc'+(i===0?' good':'')+'" data-ttag="'+esc(g)+'" aria-pressed="'+(s.tags.indexOf(g)>=0)+'">'+esc(g)+'</button>'}).join('')+'</div></div>'+
+    '<div><label>How well did you execute? (1 to 5)</label><div class="stars" role="group">'+[1,2,3,4,5].map(function(n){return '<button type="button" data-tstar="'+n+'" aria-pressed="'+(s.rating===n)+'">'+n+'</button>'}).join('')+'</div></div>'+
+    '<div><label for="tno">Notes</label><textarea id="tno" rows="3" placeholder="Why did you take it? What did you learn?">'+esc(s.notes)+'</textarea></div>'+
+    '<p class="err" id="terr" role="alert"></p><div class="btns"><button class="btn primary" type="submit" style="flex:1">'+(s.id?'Save changes':'Save trade')+'</button>'+(s.id?'<button class="btn danger" type="button" id="tdel">Delete</button>':'')+'<button class="btn" type="button" id="tx">Cancel</button></div></form></div></div>';
+  var root=document.getElementById('sheetRoot');root.innerHTML=h;
+  function grab(){
+    var g=function(id){var e=document.getElementById(id);return e?e.value:null};
+    s.symbol=g('tsy');s.date=g('tdt');if(g('tam')!==null)s.amount=g('tam');s.setup=g('tsu');s.entry=g('ten');s.exit=g('tex');s.size=g('tsz');s.risk=g('tri');s.notes=g('tno');
+  }
+  root.querySelectorAll('[data-tside]').forEach(function(b){b.onclick=function(){grab();s.side=b.dataset.tside;renderTSheet(false)}});
+  root.querySelectorAll('[data-tres]').forEach(function(b){b.onclick=function(){grab();s.res=b.dataset.tres;renderTSheet(false)}});
+  root.querySelectorAll('[data-ttag]').forEach(function(b){b.onclick=function(){grab();var i=s.tags.indexOf(b.dataset.ttag);if(i>=0)s.tags.splice(i,1);else s.tags.push(b.dataset.ttag);renderTSheet(false)}});
+  root.querySelectorAll('[data-tstar]').forEach(function(b){b.onclick=function(){grab();var n=Number(b.dataset.tstar);s.rating=s.rating===n?0:n;renderTSheet(false)}});
+  document.getElementById('tx').onclick=closeTSheet;
+  document.getElementById('tscrim').onclick=function(ev){if(ev.target.id==='tscrim')closeTSheet()};
+  var del=document.getElementById('tdel');
+  if(del)del.onclick=function(){
+    if(s.del){S.trading.trades=S.trading.trades.filter(function(x){return x.id!==s.id});touch();closeTSheet();toast('Trade deleted');render();return}
+    s.del=true;del.textContent='Tap again to delete';setTimeout(function(){if(tsheet&&document.body.contains(del)){s.del=false;del.textContent='Delete'}},3500)};
+  document.getElementById('tf').onsubmit=function(ev){
+    ev.preventDefault();grab();
+    var err=document.getElementById('terr'),sym=s.symbol.trim().toUpperCase();
+    if(!sym){err.textContent='Enter the symbol you traded.';document.getElementById('tsy').focus();return}
+    if(!s.date){err.textContent='Pick a date.';return}
+    var amt=numOrNaN(s.amount),en=numOrNaN(s.entry),ex=numOrNaN(s.exit),sz=numOrNaN(s.size),rk=numOrNaN(s.risk),res=s.res;
+    if(res!=='be'&&!(amt>0)){
+      if(isFinite(en)&&isFinite(ex)&&isFinite(sz)&&sz>0){
+        var raw=(ex-en)*sz*(s.side==='long'?1:-1);amt=Math.abs(raw);res=raw>0?'win':raw<0?'loss':'be';
+      }else{err.textContent='Enter the amount won or lost, or fill entry, exit and size.';return}
+    }
+    var pnl=res==='win'?amt:res==='loss'?-amt:0;
+    var rec={id:s.id||uid(),date:s.date,symbol:sym,side:s.side,setup:s.setup,pnl:Math.round(pnl*100)/100,risk:rk>0?rk:0,
+      entry:isFinite(en)?en:null,exit:isFinite(ex)?ex:null,size:isFinite(sz)?sz:null,tags:s.tags.slice(),rating:s.rating,notes:s.notes.trim(),sample:false};
+    if(s.id)S.trading.trades=S.trading.trades.map(function(x){return x.id===s.id?rec:x});else S.trading.trades.push(rec);
+    touch();tcalKey=s.date.slice(0,7);tday=null;closeTSheet();toast(s.id?'Trade updated':'Trade saved');render();
+  };
+  if(focus)document.getElementById('tsy').focus();
+}
+
 /* ---------- new day / new month watcher ---------- */
 function startDayWatch(){
   var last=todayStr();
@@ -845,8 +1558,10 @@ function startDayWatch(){
     var prev=last;last=now;
     if(viewKey===prev.slice(0,7))viewKey=now.slice(0,7);
     if(selDate===prev){selDate=now;calKey=now.slice(0,7)}
+    if(routMonth===prev.slice(0,7))routMonth=now.slice(0,7);
+    if(tcalKey===prev.slice(0,7))tcalKey=now.slice(0,7);
     var ae=document.activeElement,typing=ae&&/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName);
-    if(!sheet&&!typing)render();
+    if(!sheet&&!tsheet&&!typing)render();
   }
   setInterval(check,60000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
@@ -856,12 +1571,12 @@ function startDayWatch(){
 /* ---------- boot ---------- */
 (function(){
   var h=(location.hash||'').replace('#','');
-  if(['overview','review','history','plans','budget'].indexOf(h)>=0)tab=h;
+  if(['overview','review','history','plans','routine','trading','budget'].indexOf(h)>=0)tab=h;
   S=loadLocal()||seedState(todayStr());
   render();
   initCloud();
   startDayWatch();
-  window.addEventListener('hashchange',function(){var n=(location.hash||'').replace('#','');if(['overview','review','history','plans','budget'].indexOf(n)>=0&&n!==tab){tab=n;render()}});
+  window.addEventListener('hashchange',function(){var n=(location.hash||'').replace('#','');if(['overview','review','history','plans','routine','trading','budget'].indexOf(n)>=0&&n!==tab){tab=n;render()}});
 })();
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
 </script>
